@@ -7,11 +7,7 @@ import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-<<<<<<< HEAD
-  { path: 'login', component:LoginComponent},
-=======
   { path: 'login', component: LoginComponent },
->>>>>>> 2d7c85affc53a932d483a139393ee0533040abb8
   { path: 'client', component: ClientComponent },
   { path: 'user', component: UserComponent },
   { path: 'project', component: ProjectComponent },

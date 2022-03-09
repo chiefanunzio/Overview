@@ -19,6 +19,7 @@ import { UserComponent } from './components/user/user.component';
   imports: [
     BrowserModule,
     AppRoutingModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,12 +1,12 @@
- export class Sprint {
-    id: number | any
-    created_at: Date | any
-    updated_at: Date | any
-    name: string | any
-    project_id: number | any
-    start_date: Date | any
-    end_date: Date | any
-    effort_days: null | any
-    revenue: null | any
-    task_ids: number[] | any
+export class Sprint {
+    id: number
+    created_at: Date
+    updated_at: Date
+    name: string
+    project_id: number
+    start_date: Date
+    end_date: Date
+    effort_days: null
+    revenue: null
+    task_ids: number[]
 }

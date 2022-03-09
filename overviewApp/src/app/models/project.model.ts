@@ -1,17 +1,17 @@
 export class Project {
-    id: any
-    name: any
-    created_at: any
-    updated_at: any
-    client_id: any
-    start_date: any
-    end_date: any
-    progress: any
-    revenue: any
-    logo: any
-    status: any
-    type: any
-    sprint_ids: number[] = []
-    user_ids: number[] = []
+    id: number
+    name: string
+    created_at: Date
+    updated_at: Date
+    client_id: number
+    start_date: Date
+    end_date: Date
+    progress: number
+    revenue: number
+    logo: string
+    status: number
+    type: string
+    sprint_ids: number[]
+    user_ids: number[]
 
 }

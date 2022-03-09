@@ -1,6 +1,6 @@
 export class Message {
-    nome: any
-    foto: string | any
-    msgText: any
-    create_at: any
+    nome: string
+    foto: string | null
+    msgText: string
+    create_at: Date
 }

@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.loginService.checkLogin(this.loginForm.value.user, this.loginForm.value.password).subscribe((res) => {
-      console.log(res.data.token);
       localStorage.setItem('token', res.data.token);
     });
 

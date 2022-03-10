@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private loginService: LoginService) { }
 
   ngOnInit(): void {
+  }
+
+  loginForm = new FormGroup({
+    user: new FormControl(''),
+    password: new FormControl(''),
+  });
+
+  onSubmit() {
+    this.loginService.checkLogin(this.loginForm.value.user, this.loginForm.value.password).subscribe((res) => {
+      console.log(res.data.token);
+      localStorage.setItem('token', res.data.token);
+    });
+
   }
 
 }

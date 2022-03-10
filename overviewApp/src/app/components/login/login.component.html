@@ -1,1 +1,8 @@
-<p>componente login</p>
+<div>
+    <h2>Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input type="text" name="username" formControlName="user" placeholder="Username">
+        <input type="password" name="password" formControlName="password" placeholder="Password">
+        <button type="submit">Accedi</button>
+    </form>
+</div>

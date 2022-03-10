@@ -1,1 +1,5 @@
-<p>client works!</p>
+<button (click)="getClient()">Clienti</button>
+
+<ul>
+    <li *ngFor="let client of clientsList">{{ client.name }}</li>
+</ul>

@@ -1,1 +1,6 @@
-<p>usersgit works!</p>
+<button *ngIf="!isLogged" (click)="logIn()">login</button>
+<button *ngIf="isLogged" (click)="getU()">getUsers</button>
+
+<ul>
+  <li *ngFor="let user of users">{{ user.name }}</li>
+</ul>

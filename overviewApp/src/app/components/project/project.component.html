@@ -1,1 +1,14 @@
-<p>componente nunzio</p>
+<p>componente project</p>
+
+
+<button (click)="logIn()">logIn end get project</button>
+<div class="projectCard" *ngFor="let p of projects">
+
+    <ul>
+        <li>
+            <span>nome progetto:{{p.name}} --> </span>
+            <span>stato: {{p.status}} --> </span>
+            <span>progress: {{p.progress}}</span>
+        </li>
+    </ul>
+</div>

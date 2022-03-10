@@ -7,16 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ProjectService {
 
-  token:''
-  constructor(private http: HttpClient) { }
-
-  
-  postLogIn(body:any): Observable<any> {
-
-    let url = 'http://80.211.57.191/api/login'
-   
-    return this.http.post(url,body)
-  }
+  token:any
+  constructor(private http: HttpClient) {
+    
+    this.token = localStorage.getItem('token')
+   }
 
 
   getProject(): Observable<any> {

@@ -9,9 +9,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
   
-    token=""
-    header = new HttpHeaders({'Autorization':this.token})
-
+    token= localStorage.getItem('token')
     url = `http://80.211.57.191/api/users` 
     
     
@@ -23,10 +21,22 @@ export class UserService {
     return this.http.get(this.url,{headers: headers});
   }
 
-  postLogIn(body:any): Observable<any> {
-
-    let url = 'http://80.211.57.191/api/login'
-
-    return this.http.post(url,body)
+  addUser(form:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    let body = {
+     "name":form.name,
+     "surname":form.surname,
+     "email":form.email,
+     "password":form.password,
+     "cost":form.cost,
+     "recruitment_date":form.recruitment_date,
+     "week_working_hours":form.week_working_hours,
+    };
+    return this.http.post(this.url, body,{headers: headers});
   }
+
+  
 }

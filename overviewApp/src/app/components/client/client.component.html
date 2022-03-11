@@ -3,3 +3,16 @@
 <ul>
     <li *ngFor="let client of clientsList">{{ client.name }}</li>
 </ul>
+
+<button (click)="showForm = !showForm">Aggiungi Cliente</button>
+
+<div *ngIf="showForm">
+    <h3>Nuovo cliente</h3>
+    <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+        <input type="text" name="name" formControlName="name" placeholder="Nome">
+        <input type="text" name="vat_number" formControlName="vat_number" placeholder="Partita IVA">
+        <input type="text" name="business_name" formControlName="business_name" placeholder="Nome commericale">
+        <input type="text" name="representatives" formControlName="representatives" placeholder="Rappresentanti">
+        <button type="submit">Aggiungi</button>
+    </form>
+</div>

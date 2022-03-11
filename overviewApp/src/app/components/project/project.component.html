@@ -12,3 +12,18 @@
         </li>
     </ul>
 </div>
+
+<div>
+  <h2>add project</h2>
+  <form [formGroup]="projectForm" (ngSubmit)="addProject()">
+    <input type="text" name="name" formControlName="name" placeholder="name">
+    <input type="number" name="status" formControlName="status" placeholder="status">
+    <input type="date" name="start_date" formControlName="start_date" placeholder="start_date">
+    <input type="date" name="end_date" formControlName="end_date" placeholder="end_date">
+    <input type="number" name="progress" formControlName="progress" placeholder="progress">
+    <input type="number" name="revenue" formControlName="revenue" placeholder="revenue">
+    <input type="number" name="client_id" formControlName="client_id" placeholder="client_id">
+    <input type="number" name="user_ids" formControlName="user_ids" placeholder="user_ids">
+    <button type="submit">aggiungi</button>
+  </form>
+</div>

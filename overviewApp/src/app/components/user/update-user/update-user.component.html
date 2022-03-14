@@ -2,32 +2,15 @@
 <form [formGroup]="profileForm" *ngIf="user">
   <div>
     <span>Name</span>
-    <input
-      id="name"
-      type="text"
-      formControlName="name"
-      placeholder="{{ user.name }}"
-    />
+    <input id="name" type="text" formControlName="name" />
   </div>
   <div>
     <span>Surname</span>
-    <input
-      id="surname"
-      type="text"
-      formControlName="surname"
-      placeholder="{{ user.surname }}"
-    />
+    <input id="surname" type="text" formControlName="surname" />
   </div>
   <div>
     <span>Role</span>
-    <input
-      id="role"
-      type="number"
-      formControlName="role"
-      placeholder="{{ user.role }}"
-      min="0"
-      max="2"
-    />
+    <input id="role" type="number" formControlName="role" min="0" max="2" />
   </div>
   <div>
     <span>Serial Number</span>
@@ -35,7 +18,6 @@
       id="serial_number"
       type="text"
       formControlName="serial_number"
-      placeholder="{{ user.serial_number }}"
       min="0"
       max="2"
     />
@@ -47,27 +29,16 @@
       id="recruitment_date"
       type="text"
       formControlName="recruitment_date"
-      placeholder="{{ user.recruitment_date }}"
     />
   </div>
   <div>
     <span>Email</span>
-    <input
-      id="email"
-      type="email"
-      formControlName="email"
-      placeholder="{{ user.email }}"
-    />
+    <input id="email" type="email" formControlName="email" />
   </div>
 
   <div>
     <span>Cost</span>
-    <input
-      id="cost"
-      type="number"
-      formControlName="cost"
-      placeholder="{{ user.cost }}"
-    />
+    <input id="cost" type="number" formControlName="cost" />
   </div>
 
   <div>
@@ -76,7 +47,6 @@
       id="week_working_hours"
       type="number"
       formControlName="week_working_hours"
-      placeholder="{{ user.week_working_hours }}"
     />
   </div>
   <button (click)="back()">Indietro</button>

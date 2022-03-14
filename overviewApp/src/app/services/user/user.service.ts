@@ -45,6 +45,23 @@ export class UserService {
     };
     return this.http.post(this.url, body,{headers: headers});
   }
+  updateUser(form:any,id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    let body = {
+      "name":form.name,
+      "surname":form.surname,
+      "role":form.role,
+      "serial_number":form.serial_number,
+      "email":form.email,
+      "cost":form.cost,
+      "recruitment_date":form.recruitment_date,
+      "week_working_hours":form.week_working_hours,
+     };
+     return this.http.patch(`${this.url}/${id}`, body,{headers: headers});
+  }
 
   
 }

@@ -1,1 +1,84 @@
+<h1>Update User</h1>
+<form [formGroup]="profileForm" *ngIf="user">
+  <div>
+    <span>Name</span>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      placeholder="{{ user.name }}"
+    />
+  </div>
+  <div>
+    <span>Surname</span>
+    <input
+      id="surname"
+      type="text"
+      formControlName="surname"
+      placeholder="{{ user.surname }}"
+    />
+  </div>
+  <div>
+    <span>Role</span>
+    <input
+      id="role"
+      type="number"
+      formControlName="role"
+      placeholder="{{ user.role }}"
+      min="0"
+      max="2"
+    />
+  </div>
+  <div>
+    <span>Serial Number</span>
+    <input
+      id="serial_number"
+      type="text"
+      formControlName="serial_number"
+      placeholder="{{ user.serial_number }}"
+      min="0"
+      max="2"
+    />
+  </div>
+  <div>
+    <span>Recruitment date</span>
+    <input
+      onfocus="(this.type='date')"
+      id="recruitment_date"
+      type="text"
+      formControlName="recruitment_date"
+      placeholder="{{ user.recruitment_date }}"
+    />
+  </div>
+  <div>
+    <span>Email</span>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="{{ user.email }}"
+    />
+  </div>
 
+  <div>
+    <span>Cost</span>
+    <input
+      id="cost"
+      type="number"
+      formControlName="cost"
+      placeholder="{{ user.cost }}"
+    />
+  </div>
+
+  <div>
+    <span>Week working hours</span>
+    <input
+      id="week_working_hours"
+      type="number"
+      formControlName="week_working_hours"
+      placeholder="{{ user.week_working_hours }}"
+    />
+  </div>
+  <button (click)="back()">Indietro</button>
+  <button (click)="onSubmit()">Update</button>
+</form>

@@ -7,10 +7,11 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.token = localStorage.getItem('token');
+  }
   
-    token=""
-    header = new HttpHeaders({'Autorization':this.token})
+  token:any
 
     url = `http://80.211.57.191/api/users` 
     

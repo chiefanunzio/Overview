@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Client } from 'src/app/models/client.model';
 import { Project } from 'src/app/models/project.model';
+import { User } from 'src/app/models/user.model';
+import { ClientService } from 'src/app/services/client/client.service';
 import { ProjectService } from 'src/app/services/project/project.service';
+import { UserService } from 'src/app/services/user/user.service';
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
@@ -10,10 +14,12 @@ import { ProjectService } from 'src/app/services/project/project.service';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor(private route: Router, private service: ProjectService, private fb: FormBuilder) { }
+  constructor(private route: Router, private service: ProjectService, private fb: FormBuilder,private clientService:ClientService, private userService:UserService) { }
   
 
   projects:Project[]=[]
+  client:Client[]=[]
+  users:User[]=[]
   
   projectForm = this.fb.group(
     {
@@ -27,41 +33,64 @@ export class ProjectComponent implements OnInit {
       user_ids : new FormControl('')
     }
   )
-
-  
- 
   
   getProject(): void {
     this.service.getProject().subscribe((res) => {
       
       this.projects = res.data
-      
+      this.service.project = res.data
     })
   }
 
+ 
+  getClient(){
+    this.clientService.getClients().subscribe((res) => {
+
+      this.client = res.data
+      this.service.client = res.data
+    })
+  }
+
+  getUser(){
+    this.userService.getUsers().subscribe((res) => {
+
+      this.users = res.data
+      this.service.users = res.data 
+    })
+  }
   addProject(){
-    let newProj = new Project(
-      this.projectForm.controls['name'].value,
-      this.projectForm.controls['status'].value,
-      this.projectForm.controls['start_date'].value,
-      this.projectForm.controls['end_date'].value,
-      this.projectForm.controls['progress'].value,
-      this.projectForm.controls['revenue'].value,
-      this.projectForm.controls['client_id'].value,
-      this.projectForm.controls['user_ids'].value
-      )
-      console.log(newProj);
-      this.service.newProj = newProj
-      this.service.addProject().subscribe((res) => {
+
+    let newProj = this.projectForm.value
+      this.service.addProject(newProj).subscribe((res) => {
 
         console.log(res);
         
       })
-      
 
     }
+
+  updateProject(id:number){
+    this.service.getUpdateProject(id).subscribe((res) =>{
+
+      this.service.updatedProject = res.data
+      console.log(res);
+      
+      this.route.navigate(['updateProject',id])
+    })
+  }
+
+  delProject(id:number){
+
+    this.service.deleteProject(id).subscribe((res) => {
+
+      this.getProject()
+
+    })
+  }
     
   ngOnInit() {
+    this.getClient()
+    this.getUser()
     
   }
 

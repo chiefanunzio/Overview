@@ -8,6 +8,7 @@ import { ProjectComponent } from './components/project/project.component';
 import { UserComponent } from './components/user/user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
+import { UpdateClientComponent } from './components/client/update-client/update-client.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HttpClientModule} from '@angular/common/http';
     LoginComponent,
     ClientComponent,
     ProjectComponent,
-    UserComponent
+    UserComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,

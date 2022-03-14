@@ -1,7 +1,9 @@
 <h1>Users list</h1>
 
 <ul>
-  <li *ngFor="let user of users">{{ user.name }}</li>
+  <li routerLink="{{ user.id }}" *ngFor="let user of users">
+    {{ user.name }}
+  </li>
 </ul>
 
 <button *ngIf="!isCreate" (click)="isCreate = !isCreate">New user</button>

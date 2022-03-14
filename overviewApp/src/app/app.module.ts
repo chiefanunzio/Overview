@@ -9,13 +9,15 @@ import { ClientComponent } from './components/client/client.component';
 import { ProjectComponent } from './components/project/project.component';
 import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ClientComponent,
     ProjectComponent,
-    UserComponent
+    UserComponent,
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,

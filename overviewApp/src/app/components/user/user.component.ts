@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -10,7 +11,7 @@ import { Validators } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 
-  users:any
+  users:User[]
   isCreate=false
   
   constructor(private uService:UserService,private route:Router) { }

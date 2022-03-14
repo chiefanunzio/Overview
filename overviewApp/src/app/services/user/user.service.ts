@@ -21,6 +21,14 @@ export class UserService {
     return this.http.get(this.url,{headers: headers});
   }
 
+  retrieveUser(id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.get(`${this.url}/${id}`,{headers: headers});
+  }
+
   addUser(form:any): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

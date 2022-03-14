@@ -62,6 +62,13 @@ export class UserService {
      };
      return this.http.patch(`${this.url}/${id}`, body,{headers: headers});
   }
+  deleteUser(id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.delete(`${this.url}/${id}`,{headers: headers});
+  }
 
   
 }

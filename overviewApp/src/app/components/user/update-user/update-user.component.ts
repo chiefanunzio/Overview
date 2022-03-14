@@ -42,6 +42,14 @@ export class UpdateUserComponent implements OnInit {
     });
     
   }
+  deleteUser(){
+    this.uService.deleteUser(this.id).subscribe(res=>{
+      alert('User deleted successfully');
+      this.location.back()
+    },(error)=>{
+      alert(error.error.message)
+    });
+  }
   back(){
     this.location.back()
   }

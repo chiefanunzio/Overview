@@ -18,7 +18,6 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.uService.getUsers().subscribe(res=>{
-      console.log(res)
       this.users = res.data
     },(error)=>{
       alert('you are not logged-in')

@@ -48,5 +48,8 @@ export class UserComponent implements OnInit {
       })
     }
   }
+  back(){
+    this.isCreate = false
+  }
 
 }

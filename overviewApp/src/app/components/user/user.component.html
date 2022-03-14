@@ -23,7 +23,12 @@
     </p>
     <p>
       <span>Password</span>
-      <input id="password" type="password" formControlName="password" />
+      <input
+        id="password"
+        type="password"
+        autocomplete="on"
+        formControlName="password"
+      />
     </p>
     <p>
       <span>Cost</span>
@@ -41,10 +46,11 @@
       <span>Week working hours</span>
       <input
         id="week_working_hours"
-        type="text"
+        type="number"
         formControlName="week_working_hours"
       />
     </p>
+    <button (click)="back()">Annulla</button>
     <button (click)="onSubmit()">Create</button>
   </form>
 </div>

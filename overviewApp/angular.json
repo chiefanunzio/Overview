@@ -34,9 +34,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/styles/app/_app.scss",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/echarts/dist/echarts.min.js"
+            ]
           },
           "configurations": {
             "production": {

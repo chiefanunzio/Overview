@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateClientComponent } from './components/client/update-client/update-client.component';
 import { UpdateProjectComponent } from './components/project/update-project/update-project.component';
 
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +24,8 @@ import { UpdateProjectComponent } from './components/project/update-project/upda
     UserComponent,
     UpdateUserComponent,
     UpdateClientComponent,
-    UpdateProjectComponent
+    UpdateProjectComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +34,7 @@ import { UpdateProjectComponent } from './components/project/update-project/upda
     FormsModule,
     HttpClientModule,
 
+ 
   ],
   providers: [
 

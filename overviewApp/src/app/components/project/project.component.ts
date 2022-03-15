@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user.model';
 import { ClientService } from 'src/app/services/client/client.service';
 import { ProjectService } from 'src/app/services/project/project.service';
 import { UserService } from 'src/app/services/user/user.service';
+
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',

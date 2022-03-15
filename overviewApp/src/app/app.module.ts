@@ -9,6 +9,8 @@ import { UserComponent } from './components/user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateClientComponent } from './components/client/update-client/update-client.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,18 +18,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ClientComponent,
     ProjectComponent,
     UserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    UpdateClientComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-        FormsModule,
+    FormsModule,
     HttpClientModule,
-    
+
   ],
   providers: [
-    
+
   ],
   bootstrap: [AppComponent]
 })

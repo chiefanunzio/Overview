@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProjectComponent } from './components/project/project.component';
 import { UpdateProjectComponent } from './components/project/update-project/update-project.component';
 import { UserComponent } from './components/user/user.component';
+import { UpdateClientComponent } from './components/client/update-client/update-client.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'project', component: ProjectComponent },
   { path: 'updateProject/:id', component: UpdateProjectComponent },
+  { path: 'client/:id', component: UpdateClientComponent },
 ];
 
 @NgModule({

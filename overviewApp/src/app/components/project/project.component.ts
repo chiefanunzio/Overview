@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup,FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Client } from 'src/app/models/client.model';
 import { Project } from 'src/app/models/project.model';
@@ -15,36 +15,36 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ProjectComponent implements OnInit {
 
-  constructor(private route: Router, private service: ProjectService, private fb: FormBuilder,private clientService:ClientService, private userService:UserService) { }
-  
+  constructor(private route: Router, private service: ProjectService, private fb: FormBuilder, private clientService: ClientService, private userService: UserService) { }
 
-  projects:Project[]=[]
-  client:Client[]=[]
-  users:User[]=[]
-  
+
+  projects: Project[] = []
+  client: Client[] = []
+  users: User[] = []
+
   projectForm = this.fb.group(
     {
       name: new FormControl(''),
-      status : new FormControl(''),
-      start_date : new FormControl(''),
-      end_date : new FormControl(''),
-      progress : new FormControl(''),
-      revenue : new FormControl(''),
-      client_id : new FormControl(''),
-      user_ids : new FormControl('')
+      status: new FormControl(''),
+      start_date: new FormControl(''),
+      end_date: new FormControl(''),
+      progress: new FormControl(''),
+      revenue: new FormControl(''),
+      client_id: new FormControl(''),
+      user_ids: new FormControl('')
     }
   )
-  
-  getProject(): void {
-    this.service.getProject().subscribe((res) => {
-      
+
+  getProjects(): void {
+    this.service.getProjects().subscribe((res) => {
+
       this.projects = res.data
       this.service.project = res.data
     })
   }
 
- 
-  getClient(){
+
+  getClient() {
     this.clientService.getClients().subscribe((res) => {
 
       this.client = res.data
@@ -52,49 +52,39 @@ export class ProjectComponent implements OnInit {
     })
   }
 
-  getUser(){
+  getUser() {
     this.userService.getUsers().subscribe((res) => {
 
       this.users = res.data
-      this.service.users = res.data 
+      this.service.users = res.data
     })
   }
-  addProject(){
+
+
+  addProject() {
 
     let newProj = this.projectForm.value
-      this.service.addProject(newProj).subscribe((res) => {
-
-        console.log(res);
-        
-      })
-
-    }
-
-  updateProject(id:number){
-    this.service.getUpdateProject(id).subscribe((res) =>{
-
-      this.service.updatedProject = res.data
-      console.log(res);
-      
-      this.route.navigate(['updateProject',id])
-    })
+    this.service.addProject(newProj).subscribe()
   }
 
-  delProject(id:number){
+  updateProject(id: number) {
 
-    this.service.deleteProject(id).subscribe((res) => {
-
-      this.getProject()
-
-    })
+    this.service.currentProject = id
+    this.route.navigate(['updateProject', id])
   }
-    
+
+  delProject(id: number) {
+
+    this.service.deleteProject(id).subscribe()
+    this.getProjects()
+  }
+
   ngOnInit() {
     this.getClient()
     this.getUser()
-    
+
   }
 
 }
-  
+
 

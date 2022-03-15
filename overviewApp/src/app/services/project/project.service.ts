@@ -12,19 +12,20 @@ export class ProjectService {
 
   token:any
   updatedProject:any
-  project: Project[] = []
-  client: Client[] = []
-  users: User[] = []
+  currentProject:any // id progetto singolo corrente
+  project: Project[]
+  client: Client[]
+  users: User[]
 
   constructor(private http: HttpClient) {
     
     this.token = localStorage.getItem('token')
    }
 
+   // retrive su progetto singolo
+  getUpdateProject(): Observable<any> {
 
-  getUpdateProject(projId: number): Observable<any> {
-
-    let url = `http://80.211.57.191/api/projects/${projId}`;
+    let url = `http://80.211.57.191/api/projects/${this.currentProject}`;
     const headers = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${this.token}`
@@ -33,6 +34,8 @@ export class ProjectService {
     return this.http.get(url, { headers })
   }
 
+  
+  //patch progetto
   updateProject(form:any,projId:number): Observable<any> {
     let url = `http://80.211.57.191/api/projects/${projId}`
     const headers = {
@@ -55,7 +58,7 @@ export class ProjectService {
   }
 
 
-  getProject(): Observable<any> {
+  getProjects(): Observable<any> {
     let url = 'http://80.211.57.191/api/projects' ;
     const headers = {
       'Content-Type': 'application/json',

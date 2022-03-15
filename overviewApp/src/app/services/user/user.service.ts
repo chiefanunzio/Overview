@@ -11,8 +11,7 @@ export class UserService {
     this.token = localStorage.getItem('token');
   }
   
-  token:any
-
+    token= localStorage.getItem('token')
     url = `http://80.211.57.191/api/users` 
     
     
@@ -24,10 +23,54 @@ export class UserService {
     return this.http.get(this.url,{headers: headers});
   }
 
-  postLogIn(body:any): Observable<any> {
-
-    let url = 'http://80.211.57.191/api/login'
-
-    return this.http.post(url,body)
+  retrieveUser(id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.get(`${this.url}/${id}`,{headers: headers});
   }
+
+  addUser(form:any): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    let body = {
+     "name":form.name,
+     "surname":form.surname,
+     "email":form.email,
+     "password":form.password,
+     "cost":form.cost,
+     "recruitment_date":form.recruitment_date,
+     "week_working_hours":form.week_working_hours,
+    };
+    return this.http.post(this.url, body,{headers: headers});
+  }
+  updateUser(form:any,id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    let body = {
+      "name":form.name,
+      "surname":form.surname,
+      "role":form.role,
+      "serial_number":form.serial_number,
+      "email":form.email,
+      "cost":form.cost,
+      "recruitment_date":form.recruitment_date,
+      "week_working_hours":form.week_working_hours,
+     };
+     return this.http.patch(`${this.url}/${id}`, body,{headers: headers});
+  }
+  deleteUser(id:any){
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.delete(`${this.url}/${id}`,{headers: headers});
+  }
+
+  
 }

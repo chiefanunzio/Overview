@@ -6,11 +6,9 @@ import { LoginComponent } from './components/login/login.component';
 import { ClientComponent } from './components/client/client.component';
 import { ProjectComponent } from './components/project/project.component';
 import { UserComponent } from './components/user/user.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UpdateUserComponent } from './components/user/update-user/update-user.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule} from '@angular/common/http';
-import { UpdateProjectComponent } from './components/project/update-project/update-project.component';
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,14 +16,13 @@ import { UpdateProjectComponent } from './components/project/update-project/upda
     ClientComponent,
     ProjectComponent,
     UserComponent,
-    UpdateProjectComponent,
-  
+    UpdateUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule,
+        FormsModule,
     HttpClientModule,
     
   ],

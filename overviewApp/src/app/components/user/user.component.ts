@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user/user.service';
-
+import { FormGroup, FormControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,30 +11,45 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private uService:UserService) { }
+  users:User[]
+  isCreate=false
+  
+  constructor(private uService:UserService,private route:Router) { }
 
   ngOnInit(): void {
-  }
-  body = {
-      "email": "m.nonnis@h2app.it",
-      "password": "H2App2022"
-    }
-  token:any
-  users:any
-  isLogged = false  
-  getU(){
     this.uService.getUsers().subscribe(res=>{
-      console.log(res)
       this.users = res.data
+    },(error)=>{
+      alert('you are not logged-in')
+      this.route.navigate(['/'])
     })
   }
-  logIn(){
+  
+  profileForm = new FormGroup({
+    name: new FormControl('',Validators.required),
+    surname: new FormControl('',Validators.required),
+    email: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required),
+    cost: new FormControl('',Validators.required),
+    recruitment_date: new FormControl('',Validators.required),
+    week_working_hours: new FormControl('',Validators.required),
+  });
 
-    this.uService.postLogIn(this.body).subscribe((res)=>{
-      console.log(res);
-      this.token = res.data.token
-      this.uService.token = this.token
-      this.isLogged = true
-    })
+  onSubmit(){
+   
+    if(this.profileForm.status == 'INVALID'){
+     alert('All fields are required') 
+    }else{
+      this.uService.addUser(this.profileForm.value).subscribe(res=>{
+        alert( `utente ${res.data.name} creato con successo`)
+        window.location.reload()
+      },(error)=>{
+        alert(error.error.message)
+      })
+    }
   }
+  back(){
+    this.isCreate = false
+  }
+
 }

@@ -34,7 +34,6 @@ export class ProjectService {
     return this.http.get(url, { headers })
   }
 
-  
   //patch progetto
   updateProject(form:any,projId:number): Observable<any> {
     let url = `http://80.211.57.191/api/projects/${projId}`

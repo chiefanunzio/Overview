@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Client } from 'src/app/models/client.model';
 import { ClientService } from 'src/app/services/client/client.service';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-update-client',
   templateUrl: './update-client.component.html',
@@ -10,9 +10,13 @@ import { ClientService } from 'src/app/services/client/client.service';
 })
 export class UpdateClientComponent implements OnInit {
 
-  constructor(private clientService: ClientService) { }
+  constructor(private clientService: ClientService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    if(!this.clientService.currentClient) {
+      this.clientService.currentClient = this.route.snapshot.paramMap.get('id');
+    }
+    
     this.clientService.getClient().subscribe((res) => {
       this.client = res.data;
 
